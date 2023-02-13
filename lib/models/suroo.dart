@@ -93,7 +93,7 @@ const asia6 = Suroo(
   images: 'assets/images/asia/erevan.jpg',
   jooptor: [
     Joop(text: 'Sudan'),
-    Joop(text: 'Turmenistan', isTrue: true),
+    Joop(text: 'Armenia', isTrue: true),
     Joop(text: 'Tajikistan'),
     Joop(text: 'Nepal'),
   ],

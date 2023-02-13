@@ -1,5 +1,5 @@
-// ignore_for_file: file_names
-
+// ignore_for_file: file_names, must_be_immutable
+import 'package:country_app/app/app.dart';
 import 'package:country_app/components/containents_card.dart';
 import 'package:country_app/models/continents.dart';
 import 'package:country_app/pages/test_page.dart';
@@ -7,11 +7,22 @@ import 'package:country_app/utils/colors.dart';
 import 'package:country_app/utils/text.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({
     Key? key,
+    required this.iconBool,
+    required this.iconLight,
+    required this.icondark,
   }) : super(key: key);
+  final bool iconBool;
+  final IconData iconLight;
+  final IconData icondark;
 
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +30,9 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         children: [
           Row(
-            children: const [
-              SizedBox(height: 100),
-              Text(
+            children: [
+              const SizedBox(height: 100),
+              const Text(
                 AppText.AppbarTitle,
                 style: TextStyle(
                   color: Colors.black,
@@ -29,12 +40,29 @@ class MyHomePage extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(width: 115),
-              Icon(Icons.volume_up),
-              SizedBox(width: 30),
-              Icon(Icons.brightness_6),
-              SizedBox(width: 30),
-              Icon(Icons.more_vert)
+              const SizedBox(width: 115),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Icon(Icons.volume_up),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      iconBool = !iconBool;
+                    });
+                  },
+                  child: Icon(iconBool ? iconDark : iconLight),
+                ),
+              ),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Icon(Icons.more_vert),
+                ),
+              ),
             ],
           ),
           const Padding(
@@ -70,8 +98,8 @@ class MyHomePage extends StatelessWidget {
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content:
-                              Text('Кечиресиз бул континентте суроо жок!!!'),
+                          content: Text(
+                              'Кечиресиз бул континенттеги суроолор толукталууда!!!'),
                         ),
                       );
                     }

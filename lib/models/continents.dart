@@ -7,27 +7,25 @@ class Continents {
   const Continents({
     required this.name,
     required this.icon,
-    required this.color,
+    this.color,
     this.suroo,
   });
 
   final String name;
   final String icon;
-  final Color color;
+  final Color? color;
   final List<Suroo>? suroo;
 }
 
-// Continents level1 = Continents(
-//   name: AppText.level1,
-//   icon: 'moscow',
-//   color: AppColors.australia,
-// );
+Continents level1 = const Continents(
+  name: AppText.level1,
+  icon: 'moscow',
+);
 
-// Continents level2 = Continents(
-//   name: AppText.level2,
-//   icon: 'india',
-//   color: AppColors.asia,
-// );
+Continents level2 = const Continents(
+  name: AppText.level2,
+  icon: 'india',
+);
 
 final europe2 = Continents(
   name: AppText.europa,
@@ -80,6 +78,6 @@ List<Continents> continents = [
   southAmerica,
   africa,
   australia,
-  // level1,
-  // level2,
+  level1,
+  level2,
 ];
